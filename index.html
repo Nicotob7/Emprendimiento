@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gui-Glass</title>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav-container">
+            <div class="logo">Gui-Glass</div>
+            <ul class="nav-links">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#galeria">Galería</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="inicio">
+        <div class="hero-content">
+            <h1>Transformamos espacios con elegancia y seguridad</h1>
+            <p>Instalación profesional de ventanas, puertas, vidrios y cerramientos para hogares y oficinas</p>
+        </div>
+    </section>
+
+    <!-- Servicios Section -->
+    <section class="services-section" id="servicios">
+        <div class="services-container">
+            <h2>Nuestros Servicios</h2>
+            <p class="services-description">Soluciones profesionales adaptadas a tus necesidades</p>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-border-all "></i>
+                    </div>
+                    <h3>Ventanas</h3>
+                    <p>Instalación y mantenimiento de ventanas de alta calidad con eficiencia energética</p>
+                    <ul class="service-features">
+                        <li>Ventanas de PVC y Aluminio</li>
+                        <li>Ventanas Termopanel y Vidrio Monolítico</li>
+                        <li>Ventanas Proyectantes</li>
+                        <li>Ventanas de Abatir</li>
+                        <li>Ventanas Fijas</li>
+                    </ul>
+                    <button class="more-info-btn" data-service="ventanas">MÁS INFORMACIÓN</button>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-door-open"></i>
+                    </div>
+                    <h3>Puertas</h3>
+                    <p>Puertas de seguridad y diseño para interior y exterior</p>
+                    <ul class="service-features">
+                        <li>Puertas de Aluminio</li>
+                        <li>Puertas Protex</li>
+                        <li>Puertas de PVC</li>
+                        <li>Puertas Colgantes</li>
+                    </ul>
+                    <button class="more-info-btn" data-service="puertas">MÁS INFORMACIÓN</button>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-window-maximize"></i>
+                    </div>
+                    <h3>Otros</h3>
+                    <p>Soluciones integrales para terrazas y espacios exteriores</p>
+                    <ul class="service-features">
+                        <li>Cierre de Piscinas con vidrio templado</li>
+                        <li>División de Oficinas</li>
+                        <li>Lucarnas </li>
+                        <li>Vidrios Blindados</li>
+                        <li>Espejos con o sin Biselado</li>
+                        <li>Muro Cortina</li>
+                        <li>ShowerDoor</li>
+
+                    </ul>
+                    <button class="more-info-btn" data-service="cerramientos">MÁS INFORMACIÓN</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contenido Principal -->
+    <main class="main-content">
+        <!-- Galería y Servicios -->
+        <section class="gallery-section" id="galeria">
+            <div class="gallery-container">
+                <h2>Nuestros Trabajos</h2>
+                <p class="gallery-description">Descubre la calidad y el profesionalismo en cada uno de nuestros proyectos</p>
+                
+                <div class="gallery-filters">
+                    <button class="filter-btn active" data-filter="todos">Todos</button>
+                    <button class="filter-btn" data-filter="ventanas-interiores">Ventanas</button>
+                    <button class="filter-btn" data-filter="puertas-vidrio">Puertas de Vidrio</button>
+                    <button class="filter-btn" data-filter="puertas-correderas">Puertas Correderas</button>
+                    <button class="filter-btn" data-filter="divisiones-oficina">Divisiones de Oficina</button>
+                    <button class="filter-btn" data-filter="terraza-vidrio">Terrazas de Vidrio</button>
+                    <button class="filter-btn" data-filter="instalaciones-espejos">Espejos</button>
+                    <button class="filter-btn" data-filter="cierres-piscina">Cierres de Piscina</button>
+                    <button class="filter-btn" data-filter="vidrios">Vidrios</button>
+                </div>
+
+                <div class="gallery-grid">
+                    <!-- Ventanas Interiores (4 imágenes) -->
+                    <div class="gallery-item" data-category="ventanas-interiores">
+                        <img src="src/img/ventanas-interiores/0.png" alt="Ventana Interior">
+                        <div class="gallery-overlay">
+                            <h3>Ventanas Interiores</h3>
+                            <p>Diseños modernos con máxima eficiencia</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item" data-category="ventanas-interiores">
+                        <img src="src/img/ventanas-interiores/1.png" alt="Ventana Interior">
+                        <div class="gallery-overlay">
+                            <h3>Ventanas Interiores</h3>
+                            <p>Soluciones personalizadas</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item" data-category="ventanas-interiores">
+                        <img src="src/img/ventanas-interiores/2.png" alt="Ventana Interior">
+                        <div class="gallery-overlay">
+                            <h3>Ventanas Interiores</h3>
+                            <p>Acabados de alta calidad</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item" data-category="ventanas-interiores">
+                        <img src="src/img/ventanas-interiores/3.png" alt="Ventana Interior">
+                        <div class="gallery-overlay">
+                            <h3>Ventanas Interiores</h3>
+                            <p>Diseños contemporáneos</p>
+                        </div>
+                    </div>
+
+                    <!-- Puertas de Vidrio (2 imágenes) -->
+                    <div class="gallery-item" data-category="puertas-vidrio">
+                        <img src="src/img/puertas-vidrio/0.png" alt="Puerta de Vidrio">
+                        <div class="gallery-overlay">
+                            <h3>Puertas de Vidrio</h3>
+                            <p>Elegancia y transparencia</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item" data-category="puertas-vidrio">
+                        <img src="src/img/puertas-vidrio/1.png" alt="Puerta de Vidrio">
+                        <div class="gallery-overlay">
+                            <h3>Puertas de Vidrio</h3>
+                            <p>Diseños modernos</p>
+                        </div>
+                    </div>
+
+                    <!-- Puertas Correderas -->
+                    <div class="gallery-item" data-category="puertas-correderas">
+                        <img src="src/img/puertas-correderas/0.png" alt="Puerta Corredera">
+                        <div class="gallery-overlay">
+                            <h3>Puertas Correderas</h3>
+                            <p>Soluciones de ahorro de espacio</p>
+                        </div>
+                    </div>
+
+                    <!-- Divisiones de Oficina (3 imágenes) -->
+                    <div class="gallery-item" data-category="divisiones-oficina">
+                        <img src="src/img/divisiones-oficina/0.png" alt="División de Oficina">
+                        <div class="gallery-overlay">
+                            <h3>Divisiones de Oficina</h3>
+                            <p>Espacios modernos</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item" data-category="divisiones-oficina">
+                        <img src="src/img/divisiones-oficina/1.png" alt="División de Oficina">
+                        <div class="gallery-overlay">
+                            <h3>Divisiones de Oficina</h3>
+                            <p>Diseños funcionales</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item" data-category="divisiones-oficina">
+                        <img src="src/img/divisiones-oficina/2.png" alt="División de Oficina">
+                        <div class="gallery-overlay">
+                            <h3>Divisiones de Oficina</h3>
+                            <p>Soluciones empresariales</p>
+                        </div>
+                    </div>
+
+                    <!-- Terrazas de Vidrio (3 imágenes) -->
+                    <div class="gallery-item" data-category="terraza-vidrio">
+                        <img src="src/img/terraza-vidrio/0.png" alt="Terraza de Vidrio">
+                        <div class="gallery-overlay">
+                            <h3>Terrazas de Vidrio</h3>
+                            <p>Vistas panorámicas</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item" data-category="terraza-vidrio">
+                        <img src="src/img/terraza-vidrio/1.png" alt="Terraza de Vidrio">
+                        <div class="gallery-overlay">
+                            <h3>Terrazas de Vidrio</h3>
+                            <p>Espacios abiertos</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item" data-category="terraza-vidrio">
+                        <img src="src/img/terraza-vidrio/2.png" alt="Terraza de Vidrio">
+                        <div class="gallery-overlay">
+                            <h3>Terrazas de Vidrio</h3>
+                            <p>Diseños exclusivos</p>
+                        </div>
+                    </div>
+
+                    <!-- Instalaciones de Espejos (3 imágenes) -->
+                    <div class="gallery-item" data-category="instalaciones-espejos">
+                        <img src="src/img/instalaciones-espejos/0.png" alt="Instalación de Espejo">
+                        <div class="gallery-overlay">
+                            <h3>Instalaciones de Espejos</h3>
+                            <p>Amplitud visual</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item" data-category="instalaciones-espejos">
+                        <img src="src/img/instalaciones-espejos/1.png" alt="Instalación de Espejo">
+                        <div class="gallery-overlay">
+                            <h3>Instalaciones de Espejos</h3>
+                            <p>Acabados profesionales</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item" data-category="instalaciones-espejos">
+                        <img src="src/img/instalaciones-espejos/2.png" alt="Instalación de Espejo">
+                        <div class="gallery-overlay">
+                            <h3>Instalaciones de Espejos</h3>
+                            <p>Diseños personalizados</p>
+                        </div>
+                    </div>
+
+                    <!-- Cierres de Piscina (7 imágenes) -->
+                    <div class="gallery-item" data-category="cierres-piscina">
+                        <img src="src/img/cierres-piscina/0.png" alt="Cierre de Piscina">
+                        <div class="gallery-overlay">
+                            <h3>Cierres de Piscina</h3>
+                            <p>Seguridad y estilo</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item" data-category="cierres-piscina">
+                        <img src="src/img/cierres-piscina/1.png" alt="Cierre de Piscina">
+                        <div class="gallery-overlay">
+                            <h3>Cierres de Piscina</h3>
+                            <p>Protección elegante</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item" data-category="cierres-piscina">
+                        <img src="src/img/cierres-piscina/2.png" alt="Cierre de Piscina">
+                        <div class="gallery-overlay">
+                            <h3>Cierres de Piscina</h3>
+                            <p>Diseños modernos</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item" data-category="cierres-piscina">
+                        <img src="src/img/cierres-piscina/4.png" alt="Cierre de Piscina">
+                        <div class="gallery-overlay">
+                            <h3>Cierres de Piscina</h3>
+                            <p>Acabados premium</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item" data-category="cierres-piscina">
+                        <img src="src/img/cierres-piscina/5.png" alt="Cierre de Piscina">
+                        <div class="gallery-overlay">
+                            <h3>Cierres de Piscina</h3>
+                            <p>Instalaciones profesionales</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item" data-category="cierres-piscina">
+                        <img src="src/img/cierres-piscina/6.png" alt="Cierre de Piscina">
+                        <div class="gallery-overlay">
+                            <h3>Cierres de Piscina</h3>
+                            <p>Máxima calidad</p>
+                        </div>
+                    </div>
+
+                    <!-- Vidrios (3 imágenes) -->
+                    <div class="gallery-item" data-category="vidrios">
+                        <img src="src/img/vidrios/0.png" alt="Vidrio Especial">
+                        <div class="gallery-overlay">
+                            <h3>Vidrios Especiales</h3>
+                            <p>Alta resistencia</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item" data-category="vidrios">
+                        <img src="src/img/vidrios/1.png" alt="Vidrio Especial">
+                        <div class="gallery-overlay">
+                            <h3>Vidrios Especiales</h3>
+                            <p>Soluciones personalizadas</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item" data-category="vidrios">
+                        <img src="src/img/vidrios/2.png" alt="Vidrio Especial">
+                        <div class="gallery-overlay">
+                            <h3>Vidrios Especiales</h3>
+                            <p>Acabados de calidad</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Modal para detalles de proyecto -->
+                <div class="project-modal" id="projectModal">
+                    <div class="modal-content">
+                        <span class="close-modal">&times;</span>
+                        <div class="modal-grid">
+                            <div class="modal-image">
+                                <img id="modalImage" src="" alt="Proyecto">
+                            </div>
+                            <div class="modal-details">
+                                <h3 id="modalTitle"></h3>
+                                <div class="project-description" id="modalDescription"></div>
+                                <div class="project-features">
+                                    <h4>Características del Proyecto:</h4>
+                                    <ul id="modalFeatures">
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="why-us">
+            <div class="why-us-content">
+                <h2>¿Por qué elegirnos?</h2>
+                <p>Con más de una década de experiencia, nos especializamos en transformar espacios con soluciones de alta calidad en ventanas, puertas y cerramientos. Nuestro compromiso con la excelencia y la atención personalizada nos ha convertido en referentes del sector, garantizando siempre resultados que superan las expectativas de nuestros clientes.</p>
+                
+                <div class="benefits">
+                    <div class="benefit-item">
+                        <div class="benefit-icon">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <h4>Asesoramiento Personalizado</h4>
+                        <p>Te ayudamos a elegir la mejor solución para tu espacio, adaptándonos a tus necesidades y presupuesto.</p>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">
+                            <i class="fas fa-tools"></i>
+                        </div>
+                        <h4>Instalación Profesional</h4>
+                        <p>Equipo certificado y con amplia experiencia en instalación y mantenimiento de sistemas.</p>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">
+                            <i class="fas fa-award"></i>
+                        </div>
+                        <h4>Garantía de Calidad</h4>
+                        <p>Respaldamos todos nuestros trabajos con materiales certificados.</p>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">
+                            <i class="fas fa-headset"></i>
+                        </div>
+                        <h4>Consultas Post-venta</h4>
+                        <p>Seguimiento y mantenimiento continuo para asegurar el óptimo funcionamiento.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Sección de Contacto -->
+    <section class="contact-section" id="contacto">
+        <div class="contact-container">
+            <h2>Contáctanos</h2>
+            <p class="contact-description">¿Tienes un proyecto en mente? Cuéntanos sobre él</p>
+            
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-info-group">
+                        <h3>Información de Contacto</h3>
+                        <div class="contact-details">
+                            <div class="contact-detail-item">
+                                <span class="detail-label">Dirección</span>
+                                <p>Tu Ciudad, País</p>
+                            </div>
+                            <!--
+                            <div class="contact-detail-item">
+                                <span class="detail-label">Teléfono</span>
+                                <p>+1 234 567 890</p>
+                            </div>
+                            -->
+                            <div class="contact-detail-item">
+                                <span class="detail-label">Email</span>
+                                <p>info@tuempresa.com</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <form class="contact-form">
+                    <!-- Indicador de pasos -->
+                    <div class="form-steps">
+                        <div class="step active" data-step="1">
+                            <span class="step-number">1</span>
+                            <span class="step-text">Datos Personales</span>
+                        </div>
+                        <div class="step" data-step="2">
+                            <span class="step-number">2</span>
+                            <span class="step-text">Detalles del Proyecto</span>
+                        </div>
+                    </div>
+
+                    <!-- Paso 1: Datos Personales -->
+                    <div class="form-step-content" id="step1" style="display: block;">
+                        <div class="form-group">
+                            <input type="text" 
+                                   id="nombre" 
+                                   placeholder=" " 
+                                   required
+                                   pattern="[A-Za-záéíóúÁÉÍÓÚñÑ\s]+"
+                                   title="Solo se permiten letras y espacios"
+                                   onkeypress="return /[A-Za-záéíóúÁÉÍÓÚñÑ\s]/.test(event.key)">
+                            <label for="nombre">Nombre Completo</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" 
+                                   id="email" 
+                                   placeholder=" " 
+                                   required
+                                   pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                                   title="Por favor ingrese un correo electrónico válido">
+                            <label for="email">Correo Electrónico</label>
+                        </div>
+                        <div class="form-group phone-group">
+                            <div class="phone-prefix">+569</div>
+                            <input type="tel" 
+                                   id="telefono" 
+                                   placeholder=" " 
+                                   required
+                                   pattern="[0-9]{8}"
+                                   maxlength="8"
+                                   title="Ingrese 8 dígitos numéricos"
+                                   onkeypress="return /[0-9]/.test(event.key)">
+                            <label for="telefono">Teléfono</label>
+                        </div>
+                        <div class="form-navigation">
+                            <button type="button" class="next-btn">Siguiente</button>
+                        </div>
+                    </div>
+
+                    <!-- Paso 2: Detalles del Proyecto -->
+                    <div class="form-step-content" id="step2" style="display: none;">
+                        <div class="form-group">
+                            <select id="categoriaServicio" name="categoriaServicio" required>
+                                <option value="">Selecciona una Categoría</option>
+                                <option value="ventanas">Ventanas</option>
+                                <option value="puertas">Puertas</option>
+                                <option value="otros">Otros</option>
+                            </select>
+                        </div>
+                        <div class="form-group" id="serviciosEspecificos" style="display: none;">
+                            <select id="servicioEspecifico" name="servicioEspecifico" required>
+                                <option value="">Selecciona un Servicio Específico</option>
+                            </select>
+                        </div>
+                        <div class="dimensions-group" id="dimensionsFields" style="display: none;">
+                            <div class="dimensions-intro">
+                                <p>¿Conoce las medidas?</p>
+                                <span class="dimensions-subtitle">(Opcional)</span>
+                            </div>
+                            <div class="dimensions-inputs">
+                                <div class="dimension-field">
+                                    <input type="number" id="ancho" name="ancho" min="0" step="0.01">
+                                    <label for="ancho">Ancho (metros)</label>
+                                </div>
+                                <div class="dimension-field">
+                                    <input type="number" id="alto" name="alto" min="0" step="0.01">
+                                    <label for="alto">Alto (metros)</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="mensaje" placeholder=" " maxlength="1000" rows="6"></textarea>
+                            <label for="mensaje">Cuéntanos sobre tu Proyecto</label>
+                        </div>
+                        <div class="form-navigation">
+                            <button type="button" class="prev-btn">Anterior</button>
+                            <button type="submit" class="submit-btn">Enviar Mensaje</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Sobre Nosotros</h4>
+                <p>Con más de 10 años de experiencia, ofrecemos soluciones de alta calidad en ventanas, puertas y cerramientos, destacándonos por nuestro compromiso, atención personalizada y resultados que superan expectativas.</p>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Enlaces Rápidos</h4>
+                <ul class="footer-links">
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#servicios">Servicios</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>Contacto</h4>
+                <p>Email: info@ejemplo.com</p>
+                <p>Ciudad, País</p>
+            </div>
+
+            <div class="footer-section">
+                <h4>Síguenos</h4>
+                <div class="social-links">
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2024 Gui-Glass. Todos los derechos reservados.</p>
+            <div class="footer-legal">
+                <a href="#">Política de Privacidad</a>
+                <a href="#">Términos y Condiciones</a>
+                <a href="#">Aviso Legal</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal para servicios -->
+    <div id="serviceModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-header">
+                <img id="modalIcon" class="modal-icon" src="" alt="Icono del servicio">
+                <h2 id="modalTitle"></h2>
+            </div>
+            <div class="modal-body">
+                <p id="modalDescription" class="modal-description"></p>
+                <div class="modal-features">
+                    <h3>Características:</h3>
+                    <ul id="modalFeatures"></ul>
+                </div>
+                <div class="modal-details">
+                    <h3>Servicios incluidos:</h3>
+                    <ul id="modalServices"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="script.js"></script>
+    <script>
+    const servicios = {
+        ventanas: [
+            "Ventanas de PVC y Aluminio",
+            "Ventanas Termopanel y Vidrio Monolítico",
+            "Ventanas Proyectantes",
+            "Ventanas de Abatir",
+            "Ventanas Fijas"
+        ],
+        puertas: [
+            "Puertas de Aluminio",
+            "Puertas Protex",
+            "Puertas de PVC",
+            "Puertas Colgantes"
+        ],
+        otros: [
+            "Cierre de Piscinas con vidrio templado",
+            "División de Oficinas",
+            "Lucarnas",
+            "Vidrios Blindados",
+            "Espejos con o sin Biselado",
+            "Muro Cortina",
+            "ShowerDoor"
+        ]
+    };
+
+    document.getElementById('categoriaServicio').addEventListener('change', function() {
+        const serviciosEspecificos = document.getElementById('serviciosEspecificos');
+        const servicioEspecifico = document.getElementById('servicioEspecifico');
+        const dimensionsFields = document.getElementById('dimensionsFields');
+        const categoriaSeleccionada = this.value;
+
+        // Limpiar select de servicios específicos
+        servicioEspecifico.innerHTML = '<option value="">Selecciona un Servicio Específico</option>';
+        
+        // Ocultar campos de dimensiones
+        dimensionsFields.style.display = 'none';
+        dimensionsFields.classList.remove('visible');
+
+        if (categoriaSeleccionada) {
+            // Mostrar el segundo select y añadir las opciones correspondientes
+            serviciosEspecificos.style.display = 'block';
+            serviciosEspecificos.classList.add('visible');
+            
+            servicios[categoriaSeleccionada].forEach(servicio => {
+                const option = document.createElement('option');
+                option.value = servicio.toLowerCase().replace(/ /g, '_');
+                option.textContent = servicio;
+                servicioEspecifico.appendChild(option);
+            });
+        } else {
+            // Ocultar el segundo select si no hay categoría seleccionada
+            serviciosEspecificos.classList.remove('visible');
+            setTimeout(() => {
+                serviciosEspecificos.style.display = 'none';
+            }, 300);
+        }
+    });
+
+    document.getElementById('servicioEspecifico').addEventListener('change', function() {
+        const dimensionsFields = document.getElementById('dimensionsFields');
+        const servicioSeleccionado = this.value;
+
+        if (servicioSeleccionado) {
+            // Mostrar campos de dimensiones
+            dimensionsFields.style.display = 'grid';
+            // Forzar reflow
+            dimensionsFields.offsetHeight;
+            dimensionsFields.classList.add('visible');
+        } else {
+            // Ocultar campos de dimensiones
+            dimensionsFields.classList.remove('visible');
+            setTimeout(() => {
+                dimensionsFields.style.display = 'none';
+            }, 300);
+        }
+    });
+
+    // Manejo de pasos del formulario
+    document.addEventListener('DOMContentLoaded', function() {
+        const steps = document.querySelectorAll('.step');
+        const stepContents = document.querySelectorAll('.form-step-content');
+        const nextBtn = document.querySelector('.next-btn');
+        const prevBtn = document.querySelector('.prev-btn');
+        let currentStep = 1;
+
+        function updateStep(stepNumber) {
+            // Actualizar indicadores de paso
+            steps.forEach(step => {
+                if (parseInt(step.dataset.step) <= stepNumber) {
+                    step.classList.add('active');
+                } else {
+                    step.classList.remove('active');
+                }
+            });
+
+            // Actualizar contenido visible
+            stepContents.forEach(content => {
+                content.style.display = 'none';
+                content.classList.remove('active');
+            });
+            
+            const activeContent = document.getElementById(`step${stepNumber}`);
+            activeContent.style.display = 'block';
+            // Forzar reflow
+            activeContent.offsetHeight;
+            activeContent.classList.add('active');
+        }
+
+        // Validar campos del paso actual
+        function validateCurrentStep() {
+            const currentStepElement = document.getElementById(`step${currentStep}`);
+            const requiredFields = currentStepElement.querySelectorAll('[required]');
+            let isValid = true;
+
+            requiredFields.forEach(field => {
+                if (!field.value.trim()) {
+                    isValid = false;
+                    field.classList.add('invalid');
+                } else {
+                    field.classList.remove('invalid');
+                }
+            });
+
+            return isValid;
+        }
+
+        // Event listeners para los botones
+        if (nextBtn) {
+            nextBtn.addEventListener('click', function() {
+                if (validateCurrentStep()) {
+                    currentStep++;
+                    updateStep(currentStep);
+                } else {
+                    alert('Por favor, complete todos los campos requeridos.');
+                }
+            });
+        }
+
+        if (prevBtn) {
+            prevBtn.addEventListener('click', function() {
+                currentStep--;
+                updateStep(currentStep);
+            });
+        }
+
+        // Inicializar el primer paso
+        updateStep(1);
+    });
+    </script>
+</body>
+</html> 
