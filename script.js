@@ -204,13 +204,101 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         };
 
-        const defaultButton = document.querySelector('[data-filter="todos"]');
-        if (defaultButton) {
-            defaultButton.classList.add('active');
-            showFilteredItems(Array.from(galleryItems).slice(0, maxVisibleItems), true);
-            startCarousel();
-        }
+        // Configuración de la paginación
+        const itemsPerPage = 8;
+        let currentPage = 1;
 
+        const showPaginatedItems = (items, page) => {
+            const start = (page - 1) * itemsPerPage;
+            const end = start + itemsPerPage;
+            
+            // Primero ocultamos todas las imágenes con una transición suave
+            items.forEach(item => {
+                item.style.opacity = '0';
+                item.style.transform = 'scale(0.95)';
+            });
+
+            // Esperamos a que se complete la transición de ocultamiento
+            setTimeout(() => {
+                items.forEach((item, index) => {
+                    if (index >= start && index < end) {
+                        // Mostramos solo las imágenes de la página actual
+                        item.style.display = 'block';
+                        setTimeout(() => {
+                            item.style.opacity = '1';
+                            item.style.transform = 'scale(1)';
+                        }, 50);
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            }, 300);
+        };
+
+        const createPaginationControls = (totalItems, isAllFilter = false) => {
+            const paginationContainer = document.querySelector('.pagination-controls') || (() => {
+                const container = document.createElement('div');
+                container.className = 'pagination-controls';
+                document.querySelector('.gallery-grid').insertAdjacentElement('afterend', container);
+                return container;
+            })();
+
+            if (isAllFilter) {
+                paginationContainer.style.display = 'none';
+                return;
+            }
+
+            const totalPages = Math.ceil(totalItems / itemsPerPage);
+            paginationContainer.style.display = totalPages > 1 ? 'flex' : 'none';
+            paginationContainer.innerHTML = '';
+            
+            if (totalPages > 1) {
+                const prevButton = document.createElement('button');
+                prevButton.className = 'pagination-btn prev';
+                prevButton.innerHTML = '&laquo; Anterior';
+                prevButton.disabled = currentPage === 1;
+                prevButton.addEventListener('click', () => {
+                    if (currentPage > 1) {
+                        currentPage--;
+                        const activeFilter = document.querySelector('.filter-btn.active');
+                        const filterValue = activeFilter.getAttribute('data-filter');
+                        const filteredItems = Array.from(galleryItems).filter(
+                            item => item.getAttribute('data-category') === filterValue
+                        );
+                        showPaginatedItems(filteredItems, currentPage);
+                        createPaginationControls(filteredItems.length);
+                    }
+                });
+                paginationContainer.appendChild(prevButton);
+
+                // Indicador de página actual
+                const pageIndicator = document.createElement('span');
+                pageIndicator.className = 'page-indicator';
+                pageIndicator.textContent = `Página ${currentPage} de ${totalPages}`;
+                paginationContainer.appendChild(pageIndicator);
+
+                // Botón siguiente
+                const nextButton = document.createElement('button');
+                nextButton.className = 'pagination-btn next';
+                nextButton.innerHTML = 'Siguiente &raquo;';
+                nextButton.disabled = currentPage === totalPages;
+                nextButton.addEventListener('click', () => {
+                    if (currentPage < totalPages) {
+                        currentPage++;
+                        const activeFilter = document.querySelector('.filter-btn.active');
+                        const filterValue = activeFilter.getAttribute('data-filter');
+                        const filteredItems = Array.from(galleryItems).filter(
+                            item => item.getAttribute('data-category') === filterValue
+                        );
+                        showPaginatedItems(filteredItems, currentPage);
+                        createPaginationControls(filteredItems.length);
+                    }
+                });
+                paginationContainer.appendChild(nextButton);
+            }
+        };
+
+        // Modificar el evento de click de los botones de filtro
         filterButtons.forEach(button => {
             button.addEventListener('click', () => {
                 filterButtons.forEach(btn => btn.classList.remove('active'));
@@ -218,19 +306,32 @@ document.addEventListener('DOMContentLoaded', () => {
                 const filterValue = button.getAttribute('data-filter');
                 stopCarousel();
                 galleryItems.forEach(hideItem);
+                
                 setTimeout(() => {
+                    currentPage = 1; // Resetear a la primera página al cambiar filtro
                     if (filterValue === 'todos') {
-                        currentIndex = 0;
                         showFilteredItems(Array.from(galleryItems).slice(0, maxVisibleItems), true);
+                        createPaginationControls(galleryItems.length, true);
                         startCarousel();
                     } else {
-                        showFilteredItems(Array.from(galleryItems).filter(
+                        const filteredItems = Array.from(galleryItems).filter(
                             item => item.getAttribute('data-category') === filterValue
-                        ));
+                        );
+                        showPaginatedItems(filteredItems, currentPage);
+                        createPaginationControls(filteredItems.length);
                     }
                 }, 400);
             });
         });
+
+        // Modificar la inicialización por defecto
+        const defaultButton = document.querySelector('[data-filter="todos"]');
+        if (defaultButton) {
+            defaultButton.classList.add('active');
+            showFilteredItems(Array.from(galleryItems).slice(0, maxVisibleItems), true);
+            createPaginationControls(galleryItems.length, true);
+            startCarousel();
+        }
     })();
 
     // Barra de navegación con scroll
@@ -279,107 +380,38 @@ document.addEventListener('DOMContentLoaded', function() {
     const modalDescription = document.getElementById('modalDescription');
     const modalFeatures = document.getElementById('modalFeatures');
     const closeModal = modal.querySelector('.close-modal');
+
+    // Categorías que tendrán la animación del modal
+    const categoriesWithModal = [
+        'escaleras-barandas',
+        'cierres-piscina',
+        'divisiones-oficina',
+        'muro-cortina',
+        'puertas',
+        'terraza-vidrio',
+        'ventanas',
+        'otros'
+    ];
+
+    // Seleccionar solo los elementos de la galería de las categorías especificadas
     const galleryItems = document.querySelectorAll('.gallery-item');
-
-    // Datos de los proyectos
-    const projectData = {
-        'ventanas-interiores': {
-            title: 'Ventanas Interiores',
-            description: 'Instalación de ventanas interiores con diseños modernos y eficientes que maximizan la iluminación natural y mejoran la ventilación del espacio.',
-            features: [
-                'Diseño personalizado según las necesidades del cliente',
-                'Materiales de alta calidad y durabilidad',
-                'Instalación profesional y limpia',
-                'Optimización de la iluminación natural'
-            ]
-        },
-        'puertas-vidrio': {
-            title: 'Puertas de Vidrio',
-            description: 'Instalación de puertas de vidrio elegantes que combinan funcionalidad y estética, perfectas para espacios modernos y contemporáneos.',
-            features: [
-                'Vidrio templado de seguridad',
-                'Herrajes de alta calidad',
-                'Diseños personalizados',
-                'Instalación experta'
-            ]
-        },
-        'puertas-correderas': {
-            title: 'Puertas Correderas',
-            description: 'Soluciones de puertas correderas que optimizan el espacio y añaden un toque de elegancia a cualquier ambiente.',
-            features: [
-                'Sistema de deslizamiento suave',
-                'Ahorro de espacio',
-                'Diseños modernos',
-                'Fácil mantenimiento'
-            ]
-        },
-        'divisiones-oficina': {
-            title: 'Divisiones de Oficina',
-            description: 'Creación de espacios de trabajo funcionales y modernos mediante divisiones de vidrio que mantienen la luminosidad y amplitud visual.',
-            features: [
-                'Optimización del espacio de trabajo',
-                'Aislamiento acústico',
-                'Diseños corporativos',
-                'Versatilidad y adaptabilidad'
-            ]
-        },
-        'terraza-vidrio': {
-            title: 'Terrazas de Vidrio',
-            description: 'Transformación de terrazas en espacios habitables todo el año mediante cerramientos de vidrio de alta calidad.',
-            features: [
-                'Protección contra inclemencias del tiempo',
-                'Máximo aprovechamiento del espacio',
-                'Sistemas de ventilación',
-                'Vistas panorámicas'
-            ]
-        },
-        'instalaciones-espejos': {
-            title: 'Instalaciones de Espejos',
-            description: 'Instalación profesional de espejos que amplían visualmente los espacios y añaden elegancia a cualquier ambiente.',
-            features: [
-                'Espejos de alta calidad',
-                'Instalación segura',
-                'Diseños personalizados',
-                'Acabados profesionales'
-            ]
-        },
-        'cierres-piscina': {
-            title: 'Cierres de Piscina',
-            description: 'Sistemas de cerramiento para piscinas que proporcionan seguridad y permiten el uso de la piscina durante todo el año.',
-            features: [
-                'Seguridad para niños y mascotas',
-                'Mantenimiento del agua limpia',
-                'Uso durante todo el año',
-                'Fácil operación'
-            ]
-        },
-        'vidrios': {
-            title: 'Vidrios Especiales',
-            description: 'Soluciones en vidrios especiales para diferentes necesidades, desde seguridad hasta eficiencia energética.',
-            features: [
-                'Vidrios templados y laminados',
-                'Aislamiento térmico y acústico',
-                'Variedad de acabados',
-                'Certificaciones de calidad'
-            ]
-        }
-    };
-
-    // Abrir modal
+    
     galleryItems.forEach(item => {
-        item.addEventListener('click', () => {
-            const category = item.getAttribute('data-category');
-            const imgSrc = item.querySelector('img').src;
-            const data = projectData[category];
+        const category = item.getAttribute('data-category');
+        if (categoriesWithModal.includes(category)) {
+            item.addEventListener('click', () => {
+                const imgSrc = item.querySelector('img').src;
+                const title = item.querySelector('h3').textContent;
+                const description = item.querySelector('p').textContent;
 
-            if (data) {
                 modalImage.src = imgSrc;
-                modalTitle.textContent = data.title;
-                modalDescription.textContent = data.description;
-                
-                // Limpiar y agregar características
+                modalTitle.textContent = title;
+                modalDescription.textContent = description;
+
+                // Limpiar y agregar características específicas según la categoría
                 modalFeatures.innerHTML = '';
-                data.features.forEach(feature => {
+                const features = getCategoryFeatures(category);
+                features.forEach(feature => {
                     const li = document.createElement('li');
                     li.textContent = feature;
                     modalFeatures.appendChild(li);
@@ -388,15 +420,69 @@ document.addEventListener('DOMContentLoaded', function() {
                 modal.style.display = 'block';
                 document.body.style.overflow = 'hidden';
                 
-                // Añadir clase active para la animación
                 requestAnimationFrame(() => {
                     modal.classList.add('active');
                     modal.querySelector('.modal-content').style.opacity = '1';
                     modal.querySelector('.modal-content').style.transform = 'translateY(0)';
                 });
-            }
-        });
+            });
+        }
     });
+
+    // Función para obtener características específicas según la categoría
+    function getCategoryFeatures(category) {
+        const featuresMap = {
+            'escaleras-barandas': [
+                'Diseño personalizado',
+                'Materiales de alta calidad',
+                'Instalación profesional',
+                'Seguridad garantizada'
+            ],
+            'cierres-piscina': [
+                'Seguridad para toda la familia',
+                'Materiales resistentes a la intemperie',
+                'Diseño elegante',
+                'Fácil mantenimiento'
+            ],
+            'divisiones-oficina': [
+                'Optimización del espacio',
+                'Aislamiento acústico',
+                'Diseño moderno',
+                'Versatilidad'
+            ],
+            'muro-cortina': [
+                'Diseño arquitectónico moderno',
+                'Eficiencia energética',
+                'Aislamiento acústico',
+                'Resistencia estructural'
+            ],
+            'puertas': [
+                'Diseños exclusivos',
+                'Seguridad reforzada',
+                'Variedad de acabados',
+                'Instalación experta'
+            ],
+            'terraza-vidrio': [
+                'Aprovechamiento del espacio',
+                'Protección climática',
+                'Diseño panorámico',
+                'Durabilidad garantizada'
+            ],
+            'ventanas': [
+                'Aislamiento térmico',
+                'Diseño personalizado',
+                'Eficiencia energética',
+                'Durabilidad garantizada'
+            ],
+            'otros': [
+                'Soluciones a medida',
+                'Materiales de primera calidad',
+                'Instalación profesional',
+                'Garantía de servicio'
+            ]
+        };
+        return featuresMap[category] || [];
+    }
 
     // Cerrar modal
     function closeModalHandler() {

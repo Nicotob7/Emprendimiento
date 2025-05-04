@@ -1,5 +1,6 @@
 /* Variables y Reset */
 :root {
+    /* Colores */
     --primary-color: #1a1a1a;
     --secondary-color: #ffffff;
     --accent-color: #c8a97e;
@@ -7,15 +8,25 @@
     --background-color: #ffffff;
     --light-gray: #f8f8f8;
     --dark-gray: #2c2c2c;
+    --border-color: rgba(0,0,0,0.1);
+    --hover-color: #b89a6e;
+    
+    /* Espaciado y dimensiones */
     --header-height: min(80px, 10vh);
     --section-padding: min(10vh, 80px);
     --container-width: 85%;
     --max-container-width: 1400px;
-    --animation-duration: 0.4s;
-    --box-shadow: 0 10px 30px rgba(0,0,0,0.08);
     --border-radius: 8px;
+    
+    /* Efectos y transiciones */
+    --box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    --hover-shadow: 0 20px 40px rgba(0,0,0,0.12);
     --transition: all 0.3s ease;
     --hover-transform: translateY(-5px);
+    
+    /* Tipografía */
+    --font-family: 'Inter', 'Segoe UI', sans-serif;
+    --line-height: 1.8;
 }
 
 * {
@@ -25,8 +36,8 @@
 }
 
 body {
-    font-family: 'Inter', 'Segoe UI', sans-serif;
-    line-height: 1.8;
+    font-family: var(--font-family);
+    line-height: var(--line-height);
     color: var(--text-color);
     background-color: var(--background-color);
 }
@@ -69,12 +80,12 @@ body {
     border-radius: var(--border-radius);
     box-shadow: var(--box-shadow);
     transition: var(--transition);
-    border: 1px solid rgba(0,0,0,0.05);
+    border: 1px solid var(--border-color);
 }
 
 .card:hover {
     transform: var(--hover-transform);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+    box-shadow: var(--hover-shadow);
 }
 
 /* Estilos comunes para iconos */
@@ -161,7 +172,7 @@ body {
     background-color: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-    transition: all 0.3s ease;
+    transition: var(--transition);
 }
 
 .header.scrolled {
@@ -198,7 +209,7 @@ body {
     text-decoration: none;
     font-size: 0.95rem;
     font-weight: 500;
-    transition: color 0.3s ease;
+    transition: color var(--transition);
     position: relative;
 }
 
@@ -209,12 +220,12 @@ body {
     height: 2px;
     bottom: -4px;
     left: 0;
-    background-color: #333;
-    transition: width 0.3s ease;
+    background-color: var(--primary-color);
+    transition: width var(--transition);
 }
 
 .nav-links a:hover {
-    color: #333;
+    color: var(--primary-color);
 }
 
 .nav-links a:hover::after {
@@ -826,11 +837,11 @@ body {
     width: 100%;
     padding: 0.8rem;
     background-color: var(--light-gray);
-    border: 1px solid rgba(0,0,0,0.1);
+    border: 1px solid var(--border-color);
     border-radius: 4px;
     font-size: 0.95rem;
     color: var(--text-color);
-    transition: all 0.3s ease;
+    transition: var(--transition);
 }
 
 .form-group textarea {
@@ -1745,16 +1756,16 @@ body {
 
 .modal-content {
     position: relative;
-    background-color: #fff;
+    background-color: var(--secondary-color);
     margin: 50px auto;
     padding: 30px;
     width: 90%;
     max-width: 800px;
-    border-radius: 12px;
-    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
     transform: translateY(20px);
     opacity: 0;
-    transition: all 0.3s ease-in-out;
+    transition: var(--transition);
 }
 
 .modal.active .modal-content {
@@ -1939,7 +1950,7 @@ body {
     width: 100%;
     padding: 0.8rem;
     background-color: var(--light-gray);
-    border: 1px solid rgba(0,0,0,0.1);
+    border: 1px solid var(--border-color);
     border-radius: 4px;
     font-size: 0.95rem;
     color: var(--text-color);
@@ -2023,7 +2034,7 @@ body {
     height: 45px;
     padding: 0 0.8rem;
     background-color: var(--secondary-color);
-    border: 1px solid rgba(0,0,0,0.1);
+    border: 1px solid var(--border-color);
     border-radius: 4px;
     font-size: 0.95rem;
     color: var(--text-color);
@@ -2228,7 +2239,7 @@ body {
 .phone-prefix {
     background-color: var(--light-gray);
     padding: 0.8rem;
-    border: 1px solid rgba(0,0,0,0.1);
+    border: 1px solid var(--border-color);
     border-right: none;
     border-radius: 4px 0 0 4px;
     color: var(--text-color);
@@ -2313,5 +2324,64 @@ body {
     .phone-prefix {
         font-size: 0.9rem;
         padding: 0.8rem 0.6rem;
+    }
+}
+
+/* Estilos de paginación */
+.pagination-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin: 2rem 0;
+    padding: 1rem;
+}
+
+.pagination-btn {
+    background: transparent;
+    border: 1px solid var(--accent-color);
+    color: var(--accent-color);
+    padding: 0.8rem 1.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+}
+
+.pagination-btn:hover:not(:disabled) {
+    background-color: var(--accent-color);
+    color: var(--secondary-color);
+    transform: translateY(-2px);
+}
+
+.pagination-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.page-indicator {
+    font-size: 1rem;
+    color: var(--text-color);
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    background-color: rgba(200, 169, 126, 0.1);
+}
+
+@media (max-width: 768px) {
+    .pagination-controls {
+        flex-direction: row;
+        gap: 0.5rem;
+        margin: 1.5rem 0;
+    }
+
+    .pagination-btn {
+        padding: 0.6rem 1rem;
+        font-size: 0.8rem;
+    }
+
+    .page-indicator {
+        font-size: 0.9rem;
+        padding: 0.4rem 0.8rem;
     }
 } 
