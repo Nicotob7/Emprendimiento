@@ -190,10 +190,31 @@ body {
 }
 
 .logo {
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: #333;
-    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+.logo-img {
+    height: 50px;
+    width: auto;
+    object-fit: contain;
+    transition: all 0.3s ease;
+}
+
+/* Ajustar tamaño del logo cuando se hace scroll */
+.header.scrolled .logo-img {
+    height: 40px;
+}
+
+/* Ajuste responsive para el logo */
+@media (max-width: 768px) {
+    .logo-img {
+        height: 40px;
+    }
+    
+    .header.scrolled .logo-img {
+        height: 35px;
+    }
 }
 
 .nav-links {
@@ -2384,4 +2405,13 @@ body {
         font-size: 0.9rem;
         padding: 0.4rem 0.8rem;
     }
+}
+
+.logo-link {
+    text-decoration: none;
+    display: block;
+}
+
+.logo-link:hover {
+    opacity: 0.9;
 } 

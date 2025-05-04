@@ -86,6 +86,18 @@ function createModalHandler(modalId) {
 
 // Inicialización de todos los componentes cuando el DOM está listo
 document.addEventListener('DOMContentLoaded', () => {
+    // Logo click handler
+    const logoLink = document.querySelector('.logo-link');
+    if (logoLink) {
+        logoLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    }
+
     // Menú móvil
     const menuToggle = document.querySelector('.menu-toggle');
     const navLinks = document.querySelector('.nav-links');
