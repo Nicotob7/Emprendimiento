@@ -19,6 +19,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
+    // Redireccionar a los trabajos destacados después de 2,5 segundos
+    <script>
+        setTimeout(() => {
+            document.getElementById("primero").scrollIntoView({ behavior: 'smooth', block: 'start'});
+        }, 2500); // Espera 2,5 segundos antes de desplazarse
+    </script>
     <!-- Header -->
     <header class="header">
         <nav class="nav-container">
@@ -131,7 +137,7 @@
 
                 <div class="gallery-grid">
                     <!-- Cierre Escaleras y Barandas -->
-                    <div class="gallery-item" data-category="escaleras-barandas">
+                    <div class="gallery-item" data-category="escaleras-barandas" id="primero">
                         <img src="src/img/Cierre Escaleras y Barandas/0.jpg" alt="Escaleras y Barandas">
                         <div class="gallery-overlay">
                             <h3>Escaleras y Barandas</h3>
