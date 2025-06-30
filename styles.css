@@ -2421,3 +2421,14 @@ body {
   right: 20px;
   z-index: 100;
 }
+.links_contacto {
+  color: #555; /* Cambia el color al que usas para enlaces */
+  text-decoration: none; /* Quita el subrayado */
+  font-weight: normal; /* Si quieres que resalte */
+  /*transition: color 0.3s ease;*/
+}
+.links_contacto:hover {
+  color: #c8a97e; /* Un tono más oscuro al pasar el mouse */
+  text-decoration: none; /* O cualquier efecto que uses normalmente */
+  font-weight: bold; /* Si quieres que resalte */
+}
